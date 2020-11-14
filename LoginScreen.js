@@ -2,6 +2,13 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView } from 'react-native'
 
 export default class LoginScreen extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+          username:"",
+          password:""
+        }
+      }
     render() {
         return (
             <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -13,13 +20,26 @@ export default class LoginScreen extends Component {
                   <TextInput 
                   style={styles.input} 
                   placeholderTextColor="#aaaaaa" 
-                  placeholder="Username"/>
+                  placeholder="Username"
+                  value={this.state.username}  
+                  onChangeText={(username)=>{
+                      this.setState({username})
+                  }} 
+                  />
+                  
 
                   <TextInput 
                   style={styles.input} 
                   placeholderTextColor="#aaaaaa" 
                   secureTextEntry={true}
-                  placeholder="Password"/>
+                  placeholder="Password"
+                  autoCorrect={false}
+                  autoCapitalize="none"
+                  value={this.state.password}  
+                  onChangeText={(password)=>{
+                      this.setState({password})
+                  }} 
+                  />
                   <Text style={styles.forgotPassword}>Forgot password</Text>
               </View>
 
